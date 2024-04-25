@@ -48,11 +48,11 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                ansiblePlaybook('playbook.yml') {
-                    inventory('inventory.ini')
-                    credentialsId($ANSIBLE_PRIVATE_KEY)
-                    ansibleName('ansible')
-                }
+                ansiblePlaybook (
+                    playbook: 'playbook.yml'
+                    inventory: 'inventory.ini'
+                    extras: '--private-key=${ANSIBLE_PRIVATE_KEY} -v'
+                )
             }
         }
     }
