@@ -6,6 +6,7 @@ pipeline {
     }
 
     tools {
+        ansible 'ansible'
         maven 'maven'
     }
 
