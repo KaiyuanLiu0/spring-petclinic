@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        ANSIBLE_PRIVATE_KEY = credentials('ansible-private-key')
+    }
+
     tools {
         maven 'maven'
     }
@@ -40,6 +44,11 @@ pipeline {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'ansible-playbook -i inventory.ini --private-key=$ANSIBLE_PRIVATE_KEY playbook.yml'
             }
         }
     }
