@@ -26,13 +26,6 @@ pipeline {
                         sh 'mvn compile'
                     }
                 }
-        stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'sonarqube') {
-                    sh 'mvn sonar:sonar'
-                }
-            }
-        }
         stage('Build') {
             steps {
                 // Run Maven on a Unix agent.
