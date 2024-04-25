@@ -16,6 +16,12 @@ pipeline {
                 checkout scm
             }
         }
+                stage('Compile') {
+                    steps {
+                        sh 'mvn clean'
+                        sh 'mvn compile'
+                    }
+                }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'sonarqube', installationName: 'sonarqube') {
