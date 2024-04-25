@@ -1,0 +1,19 @@
+- name: deploy one petclinic to one server
+  hosts: service
+  remote_user: vagrant
+
+  tasks:
+    - name: copy the jar file to target host
+      copy:
+        src: ./target/*.jar
+        dest: ./petclinic.jar
+    - name: install openjdk17
+      become: yes
+      apt:
+        name: openjdk-17-jre
+        state: latest
+        update_cache: yes
+    - name: run the jar file
+      shell: nohup java -jar petclinic.jar &
+      args:
+        executable: /bin/bash
