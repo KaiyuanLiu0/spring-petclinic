@@ -6,7 +6,6 @@ pipeline {
     }
 
     tools {
-        ansible-playbook 'ansible-playbook'
         maven 'maven'
     }
 
