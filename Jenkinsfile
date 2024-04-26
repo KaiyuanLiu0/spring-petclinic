@@ -51,7 +51,6 @@ pipeline {
                     installation: 'ansible',
                     inventory: 'inventory.ini',
                     playbook: 'playbook.yml',
-                    vaultTmpPath: '',
                     disableHostKeyChecking: true
                 )
             }
