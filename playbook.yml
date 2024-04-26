@@ -13,6 +13,8 @@
         name: openjdk-17-jre
         state: latest
         update_cache: yes
+    - name: kill the process
+      shell: pkill -f java
     - name: run the jar file
       shell: nohup java -jar petclinic.jar &
       args:
