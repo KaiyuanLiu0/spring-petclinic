@@ -55,7 +55,7 @@ pipeline {
                     installation: 'ansible',
                     inventory: 'inventory.ini',
                     playbook: 'playbook.yml',
-                    --private-key: ANSIBLE_PRIVATE_KEY,
+                    extras: '--private-key ${ANSIBLE_PRIVATE_KEY}',
                     vaultTmpPath: '',
                     disableHostKeyChecking: true
                 )
