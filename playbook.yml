@@ -1,7 +1,5 @@
 - name: deploy one petclinic to one server
   hosts: service
-  environment:
-    ANSIBLE_HOST_KEY_CHECKING: False
   remote_user: vagrant
 
   tasks:
