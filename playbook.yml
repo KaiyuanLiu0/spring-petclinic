@@ -7,7 +7,7 @@
   tasks:
     - name: copy the jar file to target host
       copy:
-        src: target/*.jar
+        src: target/spring-petclinic-3.2.0-SNAPSHOT.jar
         dest: ./petclinic.jar
     - name: install openjdk17
       become: yes
