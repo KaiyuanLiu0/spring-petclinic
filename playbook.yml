@@ -7,14 +7,18 @@
       copy:
         src: target/spring-petclinic-3.2.0-SNAPSHOT.jar
         dest: ./petclinic.jar
+
     - name: install openjdk17
       become: yes
       apt:
         name: openjdk-17-jre
         state: latest
         update_cache: yes
+
     - name: kill the process
       shell: pkill -f java
+      ignore_errors: yes
+
     - name: run the jar file
       shell: nohup java -jar petclinic.jar &
       args:
