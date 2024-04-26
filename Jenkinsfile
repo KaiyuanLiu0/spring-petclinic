@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        ANSIBLE_PRIVATE_KEY = credentials('ansible-private-key')
-    }
-
     tools {
         maven 'maven'
     }
@@ -55,7 +51,7 @@ pipeline {
                     installation: 'ansible',
                     inventory: 'inventory.ini',
                     playbook: 'playbook.yml',
-                    extras: '--private-key ${ANSIBLE_PRIVATE_KEY}',
+                    credentialsId: 'ansible-private-key',
                     vaultTmpPath: '',
                     disableHostKeyChecking: true
                 )
