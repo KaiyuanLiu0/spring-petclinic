@@ -41,7 +41,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook.yml'
+                ansiblePlaybook installation: 'ansible', inventory: 'inventory.ini', playbook: 'playbook.yml', vaultTmpPath: '', disableHostKeyChecking: true,
             }
         }
     }
